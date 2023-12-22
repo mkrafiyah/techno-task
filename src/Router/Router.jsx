@@ -11,6 +11,7 @@ import PrivateRoute from "../Components/PrivateRoute/PrivateRoute";
 import Profile from "../Components/Profile/Profile";
 import Tasks from "../Components/Tasks/Tasks";
 import ListTasks from "../Components/ListTasks/ListTasks";
+import Reviews from "../Components/Reviews/Reviews";
 
   const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ import ListTasks from "../Components/ListTasks/ListTasks";
             path: '/registration',
             element: <Registration></Registration>
         },
+        {
+            path: '/reviews',
+            element: <Reviews></Reviews>
+        }
        
       ]
     },

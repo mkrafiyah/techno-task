@@ -1,4 +1,4 @@
-live link:
+live link: https://techno-task.web.app
 
 * A task management app.
 * User name and email will bw visible.
