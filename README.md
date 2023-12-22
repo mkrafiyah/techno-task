@@ -5,3 +5,4 @@ live link: https://techno-task.web.app
 * Sweet alert2 is used for notification.
 * Animation library: AOS.
 * Dashboard for users.
+* Responsive for both tablet and mobile device.
