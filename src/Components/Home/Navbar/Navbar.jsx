@@ -1,14 +1,35 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from '../../../../public/images/logo.png';
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProviders";
 
 
 const Navbar = () => {
+    const {user, logOut} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const handleLogout = ()=>{
+        logOut()
+        .then((result)=>{
+            console.log(result.user)
+            navigate('/');
+        })
+        .catch(error=>console.log(error))
+    }
     const navLinks = <>
     <li><NavLink to='/'>Home</NavLink></li>
     <li><NavLink to='/d'>Home</NavLink></li>
     <li><NavLink to='/d'>Home</NavLink></li>
-    <li><NavLink to='/d'>Dashboard</NavLink></li>
-    <li><NavLink to='/login'>Login</NavLink></li>
+    <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
+    
+
+    {
+        user? <> 
+        <span>{user?.displayName}</span>
+        <button onClick={handleLogout} className="btn btn-ghost">Logout</button>
+        </> : <>
+        <li><NavLink to='/login'>Login</NavLink></li>
+        </>
+    }
     </>
     return (
         <div className="navbar bg-blue-300 mb-10">

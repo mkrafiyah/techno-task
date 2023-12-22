@@ -1,9 +1,35 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProviders";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
+    const {signIn} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
     const handleLogin = e =>{
         e.preventDefault();
+        const form = new FormData(e.currentTarget)
+        const email = form.get("email");
+        const password = form.get("password");
+        console.log(email, password);
+
+         signIn(email, password)
+            .then(result=>{
+             const user = result.user;
+             Swal.fire({
+                title: "Successfull",
+                text: "Login Successfull",
+                icon: "success"
+              });
+            console.log(user)
+            navigate('/dashboard')
+
+         })
+         .catch(error => {
+            console.log(error.message);
+        })
     }
     return (
         <div>

@@ -6,6 +6,8 @@ import Main from "../Layout/Main";
 import Login from "../Components/Login/Login";
 import Registration from "../Components/Registration/Registration";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
+import Dashboard from "../Components/Dashboard/Dashboard";
+import PrivateRoute from "../Components/PrivateRoute/PrivateRoute";
 
   const router = createBrowserRouter([
     {
@@ -24,6 +26,10 @@ import ErrorPage from "../Components/ErrorPage/ErrorPage";
         {
             path: '/registration',
             element: <Registration></Registration>
+        },
+        {
+            path: '/dashboard',
+            element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
         }
       ]
     },
