@@ -8,6 +8,9 @@ import Registration from "../Components/Registration/Registration";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import Dashboard from "../Components/Dashboard/Dashboard";
 import PrivateRoute from "../Components/PrivateRoute/PrivateRoute";
+import Profile from "../Components/Profile/Profile";
+import Tasks from "../Components/Tasks/Tasks";
+import ListTasks from "../Components/ListTasks/ListTasks";
 
   const router = createBrowserRouter([
     {
@@ -27,12 +30,27 @@ import PrivateRoute from "../Components/PrivateRoute/PrivateRoute";
             path: '/registration',
             element: <Registration></Registration>
         },
-        {
-            path: '/dashboard',
-            element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
-        }
+       
       ]
     },
+    {
+        path: '/dashboard',
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        children: [
+            {
+                path: '/dashboard/profile',
+                element: <Profile></Profile>
+            },
+            {
+                path: '/dashboard/tasks',
+                element: <Tasks></Tasks>
+            },
+            {
+                path: '/dashboard/list',
+                element: <ListTasks></ListTasks>
+            }
+        ]
+    }
   ]);
 
 export default router;
