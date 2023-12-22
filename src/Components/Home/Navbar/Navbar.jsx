@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import logo from '../../../../public/images/logo.png';
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
+import { FaUserDoctor } from "react-icons/fa6";
 
 
 const Navbar = () => {
@@ -24,12 +25,18 @@ const Navbar = () => {
 
     {
         user? <> 
-        <span>{user?.displayName}</span>
         <button onClick={handleLogout} className="btn btn-ghost">Logout</button>
         </> : <>
         <li><NavLink to='/login'>Login</NavLink></li>
         </>
     }
+     {
+                        user ? <span>{user.email}
+                            <p>{user.displayName}</p>
+                            <img className="w-10 rounded" src={user.photoURL} alt="" />
+                            <FaUserDoctor className="rounded w-10"></FaUserDoctor>
+                        </span> : ''
+                    }
     </>
     return (
         <div className="navbar bg-blue-300 mb-10">
